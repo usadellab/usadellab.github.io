@@ -1,0 +1,74 @@
+.sort-table {
+	/*font:				Icon;*/
+	font: 				bold 11px Arial, Helvetica, sans-serif;
+	border:				1px Solid ThreeDShadow;
+	background-color: 	#F5F5F5;
+	background:			Window;
+	color:				WindowText;
+}
+
+.sort-table thead {
+	background:	ButtonFace;
+	text-align: center;
+	font-weight: bold;
+}
+
+.sort-table td {
+	padding:		2px 3px;
+	vertical-align: top;
+}
+
+.sort-table thead td {
+	border:			1px solid;
+	border-color:	ButtonHighlight ButtonShadow
+					ButtonShadow ButtonHighlight;
+	cursor:			default;
+}
+
+.sort-table thead td:active {
+	border-color:	ButtonShadow ButtonHighlight 
+					ButtonHighlight ButtonShadow;
+	padding:		3px 4px 1px 6px;
+}
+
+.sort-arrow {
+	width:					11px;
+	height:					11px;
+	background-position:	center center;
+	background-repeat:		no-repeat;
+	margin:					0 2px;
+}
+
+.sort-arrow.descending {
+	background-image:		url("../../pic/dhtm/down.gif");
+	
+}
+
+.sort-arrow.ascending {
+	background-image:		url("../../pic/dhtm/up.gif");
+}
+
+
+
+.imag-table {
+	/*font:				Icon;*/
+	font: 				bold 9px Arial, Helvetica, sans-serif;
+	border:				1px Solid ThreeDShadow;
+	background-color: 	#F5F5F5;
+	background:			Window;
+	color:				WindowText;
+}
+
+.imag-table td {
+	padding:		0px 0px;
+	vertical-align: top;
+}
+
+.imag-subtable {
+	font: 				normal 8px Arial, Helvetica, sans-serif;
+}
+
+.imag-table td {
+	padding:		0px 0px;
+	vertical-align: top;
+}
