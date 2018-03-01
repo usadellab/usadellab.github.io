@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<title> ORA </title>
+<meta charset="utf-8">
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="Stats.js"></script>
+<script src="sortabletable.js"></script>
+<script src="padjust.js"></script>
+<link rel="stylesheet" type="text/css" href="sortabletable.css">
+<style type="text/css">
+        .slice text {
+            font-size: 9pt;
+            font-family: Arial;
+        }   
+    </style>
+
+</head>
+
+
+
+<body>
+
+<script language="javascript" type="text/javascript">
+/*
+REMEMBER TO REMOVE THE USELESS ' from the Mapping file!
+*/
+
+
+/***
+changelog
+version .11 first public; code clean ups
+version .10 count each item only once
+version .09 added pie chart visulazation note that pie charts can not be correct once a gene is in multiple bins
+version .08 added BH correction through padjust.js
+*****/
+
+//representation of the mapping file
+var HBincode ={};
+var HBinname ={};
+
+var query = new binTable();
+var reference = new binTable();
+var warning ="";
+
+var colori= ["Green","Yellow","Blue","Orange","Purple","Cyan","Magenta","Lime","Pink","Teal","Lavender","Brown","Beige","Maroon","#98FF98","Olive","Coral","Navy","Grey"];
+
+/*/representation of the query
+var HBinCount={};
+var BinCounted = {};
+*/
+
+
+//read in mapping file. Mapping file is a standard MapMan file in text format NO effing '
+function load(filename) {
+	d3.tsv(filename, function(error, data) {
+		data.forEach(function(d) {
+				if (d.IDENTIFIER){
+					d.IDENTIFIER =d.IDENTIFIER.toUpperCase();
+					if ((HBincode[d.IDENTIFIER]) && (HBincode[d.IDENTIFIER] != d.BINCODE)){ //secondary BINCODE
+								HBincode[d.IDENTIFIER].push(d.BINCODE);
+					}
+					else { //if it existed it is the same so ok to restore
+					 /** TODO this is probably not even needed better code probably elsif !Hbincode[d.IDENTIFER]**/
+						HBincode[d.IDENTIFIER] = [];
+						HBincode[d.IDENTIFIER].push(d.BINCODE);
+					}
+				//console.log(d.IDENTIFIER+"=>"+d.BINCODE);
+				}
+				if (d.BINCODE){
+					if ((HBinname[d.BINCODE]) && (HBinname[d.BINCODE] != d.NAME)) {
+						console.log( "Binname inconsistent"+HBinname[d.BINCODE] + " YYY " + d.NAME);
+					}
+					HBinname[d.BINCODE]=d.NAME;
+				}
+		});
+		console.log("DONE parsing");
+	
+		//console.log(HBincode["798"]);
+		parsePage();
+	}); //d3
+	
+} //load
+
+
+
+function binTable(){
+	this.geneCount=0;
+	this.BinCounted={};
+	this.HBinCount={};
+	this.countBin = function (bin) {
+		var currentbin=bin;
+		do{
+			//console.log("nter"+currentbin);
+			//console.log(this.BinCounted);
+			if (!this.BinCounted[currentbin]){   //we counted this and as we bubble up its parents already nothin else to document
+			//	console.log(currentbin+"marking dirty");
+				this.BinCounted[currentbin] = 1;   //mark this as dirty
+				if (this.HBinCount[currentbin]){
+					this.HBinCount[currentbin]++;
+				//	console.log ("adding"+ currentbin);
+				}
+				else { //doesn't exist so create it
+					this.HBinCount[currentbin]=1;
+			//		console.log("setting"+currentbin);
+				} 
+				currentbin=getParent(currentbin);
+			}
+			else {/*console.log("dirty break"); */currentbin=null;}
+		} while (currentbin);
+		
+	}
+	this.cleanCountedBin =function (){
+		this.BinCounted = {};
+//		console.log("clean visited bins");
+//		console.log(this.BinCounted);
+	}
+	this.getCountsPerBin = function (bin){ 
+		if (this.HBinCount[bin]) return this.HBinCount[bin];
+		else return 0;
+	}
+}
+
+
+//gets the parent of a BIN, if the bin is root it returns null
+function getParent(element){
+	//console.log(element);
+	
+	var pos=element.lastIndexOf(".");
+	//console.log("parent:"+element.substring(0,pos));
+	if (pos === -1) return null;
+	return element.substring(0,pos);
+}
+
+
+function wrapCountGene(gene, tab){
+/** make >gene< canonical i.e remove whitespace and to uppercase
+then add all counts to >tab<  **/
+	gene=gene.toUpperCase();
+	//console.log(gene);
+	//console.log(HBincode[gene]);
+	gene=gene.replace(/\s/g,'');
+	//console.log("SCRUB;"+gene);
+	if (HBincode[gene]) {
+		tab.geneCount++;
+		for (i=0; i< HBincode[gene].length; i++) {
+		//	console.log("BECKER"+HBincode[gene][i]);
+			tab.countBin(HBincode[gene][i]); //get bincode and count this as well as its parents
+		}
+		tab.cleanCountedBin();  //reset counter for higher hierarchies
+	}
+	else {
+		warning=warning+gene+" not found <br/>";
+	}
+}
+
+function debugLogElements(element, index, array) {
+	console.log(element + "=>"+ query.HBinCount[element]);
+
+}
+
+function start() {
+	
+	query = new binTable();
+	reference = new binTable();
+	var mapping = document.getElementById("selex");
+	console.log("MAPPING"+mapping.selectedIndex);
+	if (mapping.options[mapping.selectedIndex].value == "wheat") {
+		load("mercator.results_wheat.txt");
+	}
+	else if  (mapping.options[mapping.selectedIndex].value == "apo") {
+		load("mercator.results_apo.txt");
+	}
+	else if (mapping.options[mapping.selectedIndex].value == "tair10") {
+		load("ath_agi_locus_tair10.txt");
+	}
+	else if (mapping.options[mapping.selectedIndex].value == "tom31") {
+		load("tomato_itag31.results.txt");
+	}
+	else if (mapping.options[mapping.selectedIndex].value == "spenn") {
+		load("pennellii.results.txt");
+	}
+	else if (mapping.options[mapping.selectedIndex].value == "buscoX4") {
+		load("BUSCO_mercator_x402.txt");
+	}
+	else if (mapping.options[mapping.selectedIndex].value == "barley_HC_2017") {
+		load("HC.results.txt");
+	}
+	else {
+		load("mercator.results_barley.txt");
+	}
+}	
+
+function parsePage(){	
+	warning="";
+	//did we run already?
+	var element = document.getElementById("body1");
+	if (element) {
+		alert("delete old result table");
+		element.parentNode.removeChild(element);
+	}
+	var st1; //will become sortable table later on
+	var svg = d3.select("#pie");
+	svg.selectAll("*").remove();
+	var wdiv = document.getElementById("warnings");
+	wdiv.innerHTML = "";
+	
+    var genebox = document.getElementById("genes").value;
+	var geneListUser = genebox.split("\n"); 
+	var geneList = Array.from(new Set(geneListUser));
+	if (geneList.length!= geneListUser.length) {warning = warning + "duplicate(s) removed from Gene List </br>";}
+	
+	var da =new Date();
+	var n = da.getTime();
+	console.log("before"+n);
+	for (k =0; k< geneList.length; k++){
+		wrapCountGene(geneList[k],query);
+	}
+	
+	console.log(da.getTime() );
+	var allBins =  Object.keys(query.HBinCount);
+	//alert(allBins);
+	allBins.forEach(debugLogElements);
+	//alert(geneList[0]);
+    //alert(geneList[0] +" "+ HBincode[geneList[0]] +" " + HBinname[HBincode[geneList[0]]]);
+	
+	
+	var refbox = document.getElementById("refs").value;
+	var refListUser = refbox.split("\n"); 
+	var refList = Array.from(new Set(refListUser));
+	if (refList.length!= refListUser.length){warning = warning + "duplicate(s) removed from Reference List </br>";} ;
+	console.log("Reflist:"+refList);
+	//var refList= [798,100676,175001,115565,176193,7632,191592,149708,195997];
+	
+	for (k =0; k< refList.length; k++){
+		wrapCountGene(refList[k],reference);
+	}
+	
+	console.log("REFERENCE");
+	console.log(JSON.stringify(reference.HBinCount));
+	var allBins =  Object.keys(reference.HBinCount);
+	var arr=[];
+	var forpie=[];
+	
+	//set up progress bar
+	pdiv = document.getElementById('progress');
+  
+	
+	/*
+			|marked			not marked
+	bin		|genes			reference - genes
+	not bin	|gene# - genes	reference# - genes# -reference + genes
+___________________________________________________	
+	sum     |gene#          reference# -genes #   
+	*/
+	var d =new Date();
+	console.log("START"+d.getTime());
+	var other=0;
+	for (k=0;k<allBins.length;k++) {
+		arr[k]=[];
+		//bincode, binname, query, reference
+		var a11 = query.getCountsPerBin(allBins[k]);
+		var a12 = reference.getCountsPerBin(allBins[k])-query.getCountsPerBin(allBins[k]);
+		var a21 = query.geneCount - query.getCountsPerBin(allBins[k]);
+		var a22 = reference.geneCount- query.geneCount - reference.getCountsPerBin(allBins[k])+ query.getCountsPerBin(allBins[k]);
+		var sval = "QVAL"+a11+ " "+a12+" "+a21+" "+a22;
+		var ratio = query.getCountsPerBin(allBins[k]) / query.geneCount / (reference.getCountsPerBin(allBins[k])/reference.geneCount ); 
+		var fraction =query.getCountsPerBin(allBins[k]) / reference.getCountsPerBin(allBins[k]);
+		pval=FisherTest(a11,a12,a21,a22);
+		console.log(sval+"SV"+pval);
+		arr[k].push(allBins[k],HBinname[allBins[k]],query.HBinCount[allBins[k]],a21,
+		reference.HBinCount[allBins[k]],pval,sval, ratio, fraction);
+		if (((HBinname[allBins[k]].split(".").length - 1)==1) & (typeof query.HBinCount[allBins[k]]!== "undefined")) { 
+		// one dot thus level 2 and disrgerad undefined 
+			console.log(HBinname[allBins[k]]+":"+query.HBinCount[allBins[k]]);
+			if  (query.HBinCount[allBins[k]]<2) {
+				other+=query.HBinCount[allBins[k]];
+			}
+			else{
+				var col=colori.pop();
+				var temp={legend: HBinname[allBins[k]] +" : "+query.HBinCount[allBins[k]] ,value: query.HBinCount[allBins[k]], color: col  };
+				forpie.push(temp);
+			}
+		}
+	}
+	/** TODO move other into pie framework **/
+	if (other>0){
+		var temp={legend: "Other : "+other ,value: other, color: "red"  };
+
+		forpie.push(temp);
+	}
+	var pvalcolumn=[];
+	for (k=0;k<arr.length;k++) {
+		pvalcolumn.push(arr[k][5]);
+	}
+	//alert(pvalcolumn);
+	var correct=padjustBH(pvalcolumn);
+	for (k=0;k<arr.length;k++) {
+		arr[k].push(correct[k]);
+	}
+	console.log("STOP"+d.getTime());
+	console.log(forpie);
+	
+	/* **************
+
+	just some output of the data
+
+	***********************/  
+	
+	tab = document.getElementById('table1');
+	console.log(tab);
+	// tab = document.createElement('table');
+
+	tbody = document.createElement("tbody");
+	tbody.id="body1";
+  
+	for (row = 0; row < arr.length; row++){
+		tr = document.createElement('tr');
+		for (col = 0; col < arr[row].length; col++){
+			td = document.createElement('td');
+			tn = document.createTextNode(arr[row][col]);
+			td.appendChild(tn);
+			tr.appendChild(td);
+		}
+		tbody.appendChild(tr);
+	}
+	tab.appendChild(tbody);
+	//make table sortable
+	st1 = new SortableTable(document.getElementById("table1"));
+	var wdiv = document.getElementById("warnings");
+	wdiv.innerHTML = warning; 
+
+	/* add pie here*/
+	var width = 1600;
+	var height = 800;
+	var radius = 200;
+	//svg defined on top
+	svg = d3.select("#pie").append("svg")
+		.attr("width", width)
+		.attr("height", height)
+		.append("g")
+		.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+	var arc = d3.svg.arc()
+			.outerRadius(radius)
+			.innerRadius(30);
+	var pie = d3.layout.pie()
+				.sort(null)
+				.value(function(d){ return d.value; });
+	var g = svg.selectAll(".slice")
+		.data(pie(forpie))
+		.enter()
+		.append("g")
+		.attr("class", "slice");
+		
+	g.append("path")
+		.attr("d", arc)
+		.attr("fill", function(d){ return d.data.color; });
+		//.attr("style","black")
+		/*g.append("text")
+			.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+			.style("text-anchor", "middle")
+			.text(function(d) { return d.data.legend; });*/
+			
+	g.append("text")
+	.attr("transform", function(d) { 
+		return "translate(" + ( (radius + 12) * Math.sin( ((d.endAngle - d.startAngle) / 2) + d.startAngle ) ) + "," + ( -1 * (radius + 12) * Math.cos( ((d.endAngle - d.startAngle) / 2) + d.startAngle ) ) + ")"; })
+	.attr("dy", ".35em")
+	.style("text-anchor", function(d) {
+		var rads = ((d.endAngle - d.startAngle) / 2) + d.startAngle;
+		if ( (rads > 7 * Math.PI / 4 && rads < Math.PI / 4) || (rads > 3 * Math.PI / 4 && rads < 5 * Math.PI / 4) ) {
+			return "middle";
+		} else if (rads >= Math.PI / 4 && rads <= 3 * Math.PI / 4) {
+			return "start";
+		} else if (rads >= 5 * Math.PI / 4 && rads <= 7 * Math.PI / 4) {
+			return "end";
+		} else {
+			return "middle";
+		}
+		})
+	.text(function(d) { 
+		return d.data.legend; });
+
+			
+} //end of parse page
+
+</script>
+
+ <select id="selex">
+  <option value="wheat">wheat</option>
+  <option value="barley_HC_2017" selected="selected">barley latest 2017 HC only</option>
+  <option value="barley">barley</option>
+  <option value="apo">APPO</option>
+  <option value="tair10">TAIR 10 LOCUS </option>
+  <option value="tom31">S. lycopersicum ITAG 3.1 </option>
+  <option value="spenn">S .pennellii LA716 </option>
+  <option value="buscoX4">BUSCO 1440 set X4.02</option>
+</select> 
+
+
+<form>
+    Paste your genes:<br>
+    <textarea rows="4" cols="25" name="genes" id="genes"></textarea>
+   
+</form>
+
+<form>
+    Paste your references:<br>
+    <textarea rows="4" cols="25" name="refs" id="refs"></textarea>
+</form>
+
+<input value="Submit" id="submit" onclick="start()" type="button">
+
+<h4>Warnings</h4>
+<div id="warnings">
+
+</div>
+
+<div id="pie">
+</div>
+
+<div id="result">
+<table id="table1" class="sort-table">
+<thead>
+<tr>
+<td>BINCODE</td><td>NAME</td><td>In List</td><td>not found</td><td>In ref</td><td>pval</td><td>check</td><td>Ratio</td><td>Fraction found</td><td>BH pval</td>
+</tr>
+</table>
+</div>
+
+</body></html>
