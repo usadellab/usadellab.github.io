@@ -80,6 +80,7 @@
                 sum = sum + h;
             }
         }
+	if (sum>1) {sum=1}
         return sum;
     }
 
