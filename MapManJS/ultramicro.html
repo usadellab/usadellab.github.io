@@ -37,7 +37,7 @@ q.await(function(error) {
 });
 
 function load_svg(callback){
-	d3.xml("Metabolism_overviewX4_V4.svg").mimeType("image/svg+xml").get(function(error, xml) {
+	d3.xml("./Pathways/Metabolism_overviewX4_V4.svg").mimeType("image/svg+xml").get(function(error, xml) {
 	  if (error) throw error;
 	  document.body.appendChild(xml.documentElement);
 	  //needs to go here otherwise we are not sure if loaded ASYNCHRONOUS
