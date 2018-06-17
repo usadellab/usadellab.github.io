@@ -48,7 +48,7 @@ function load_svg(callback){
 }
 
 function load_xml(callback){
-	d3.text("Metabolism_overviewX4_V4.xml", function(text) {
+	d3.text("./Pathways/Metabolism_overviewX4_V4.xml", function(text) {
 		//console.log(text);
 		var lines = text.split("\n");
 		var xcache;
