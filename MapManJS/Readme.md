@@ -2,11 +2,11 @@
 # MapManJS
 pure web implementations of MapMan
 over represention analysis
-head over to https://usadellab.github.io/MapManJS/test_oo11.html 
+head over to https://usadellab.github.io/MapManJS/test_oo11.html  
 a portable rewrite of MapMan in Javascript https://usadellab.github.io/MapManJS/ultramicro.html
 
 ## MapMan JS
-This is a new implementation of MapMan partially translating the original Java sources
+This is a new implementation of MapMan partially translating the original Java sources  
 xml parsing is very rudimentary at the moment and might be in the future become obsolete
 
 ## Over Representation Analysis
@@ -28,7 +28,7 @@ add hierarchical p-value
 
 
 ### ChangeLog
-v 0.11 first public version
+v 0.11 first public version  
 v 0.12 June 2018 added first public MapMan web version 
 
 ## Citation
