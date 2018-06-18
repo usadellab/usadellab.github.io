@@ -66,7 +66,7 @@ function load_xml(callback){
 				ycache = parseInt(match[2]);
 				//rematch
 				var match2 = lines[i].match (/blockformat.*?=.+?([xy])(\d+)/i);
-				if (match2[1]) {
+				if ((match2!=null) && (match2[1])) {
 					bformat=match2[1]; 
 					fnumber=match2[2];
 				} 
