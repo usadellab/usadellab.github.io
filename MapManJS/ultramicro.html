@@ -37,7 +37,7 @@ q.await(function(error) {
 });
 
 function load_svg(callback){
-	d3.xml("./Pathways/Metabolism_overviewX4_V4.svg").mimeType("image/svg+xml").get(function(error, xml) {
+	d3.xml("./Pathways/X4_Metabolism_overviewX4_V41.svg").mimeType("image/svg+xml").get(function(error, xml) {
 	  if (error) throw error;
 	  document.body.appendChild(xml.documentElement);
 	  //needs to go here otherwise we are not sure if loaded ASYNCHRONOUS
@@ -48,7 +48,7 @@ function load_svg(callback){
 }
 
 function load_xml(callback){
-	d3.text("./Pathways/Metabolism_overviewX4_V4.xml", function(text) {
+	d3.text("./Pathways/X4_Metabolism_overviewX4_V41.xml", function(text) {
 		//console.log(text);
 		var lines = text.split("\n");
 		var xcache;
