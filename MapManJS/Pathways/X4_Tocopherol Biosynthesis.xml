@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Image image="" modified="18-Jun-2018 22:40:27" scaling="1.0" model="1" datasize="10" bgcolor="0" markmode="0" legendX="10" legendY="10" labelX="10" labelY="50">
+  <DataArea x="150" y="69" visualizationType="1" type="">
+    <Identifier id="10.3.2.2" recursive="true"/>
+  </DataArea>
+  <DataArea x="150" y="152" visualizationType="1" type="">
+    <Identifier id="10.3.2.3" recursive="true"/>
+  </DataArea>
+  <DataArea x="150" y="244" visualizationType="1" type="">
+    <Identifier id="10.3.2.4" recursive="true"/>
+  </DataArea>
+  <DataArea x="150" y="323" visualizationType="1" type="">
+    <Identifier id="10.3.2.5" recursive="true"/>
+  </DataArea>
+  <DataArea x="150" y="410" visualizationType="1" type="">
+    <Identifier id="10.3.2.6" recursive="true"/>
+  </DataArea>
+  <DataArea x="449" y="179" visualizationType="1" type="">
+    <Identifier id="10.3.2.5" recursive="true"/>
+  </DataArea>
+  <DataArea x="594" y="278" visualizationType="1" type="">
+    <Identifier id="10.3.2.6" recursive="true"/>
+  </DataArea>
+  <DataArea x="414" y="60" blockFormat="x7" visualizationType="1" type="">
+    <Identifier id="10.3.2.7" recursive="true"/>
+  </DataArea>
+  <DataArea x="393" y="89" visualizationType="1" type="">
+    <Identifier id="10.3.2.8" recursive="true"/>
+  </DataArea>
+</Image>
