@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Image image="" modified="19-Jun-2018 11:25:55" scaling="1.0" model="1" datasize="8" bgcolor="0" markmode="0" legendX="10" legendY="10" labelX="10" labelY="50">
+<Image image="" modified="19-Jun-2018 11:34:50" scaling="1.0" model="1" datasize="8" bgcolor="0" markmode="0" legendX="10" legendY="10" labelX="10" labelY="50">
   <DataArea x="852" y="89" visualizationType="1" type="">
     <Identifier id="7.12.1.1" recursive="true"/>
   </DataArea>
-  <DataArea x="854" y="173" visualizationType="1" type="">
+  <DataArea x="855" y="176" visualizationType="1" type="">
     <Identifier id="7.12.1.2" recursive="true"/>
   </DataArea>
   <DataArea x="857" y="274" visualizationType="1" type="">
     <Identifier id="7.12.1.4" recursive="true"/>
   </DataArea>
-  <DataArea x="966" y="186" visualizationType="1" type="">
+  <DataArea x="989" y="187" visualizationType="1" type="">
     <Identifier id="7.12.1.3" recursive="true"/>
   </DataArea>
   <DataArea x="856" y="376" visualizationType="1" type="">
