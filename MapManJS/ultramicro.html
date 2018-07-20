@@ -55,6 +55,8 @@ function load_svg(callback){
 	});
 }
 
+// this function loads the instructions for the a pathway image
+// this is the XML file 
 function load_xml(callback){
 	d3.text("./Pathways/X4_Metabolism_overviewX4_V41.xml", function(text) {
 		//console.log(text);
@@ -102,6 +104,8 @@ function load_xml(callback){
 	});
 }
 
+// this function loads the mapping file generated eg. by Mercator4
+// this is the Mapping file loader
 function load_mf(callback){
 /** TODO add multibins **/
 	d3.text("./MappingFiles/Athaliana.results.txt", function(text) {
@@ -127,6 +131,10 @@ function load_mf(callback){
 }
 
 
+// this function loads the experimantal file
+// this is the Experiment File
+// each column is one Log2 Fold change
+// p-values etc are not yet supported
 function load_data(callback){
 	d3.text("./Experiments/JJtest.txt", function(text) {
 		//console.log(text);
