@@ -1,4 +1,4 @@
-gene	berry	fruits	are nice
+gene	XP1_nitrate	XP2_fruits	XP3_geno
 at1g01010.1	0	-0.37511315	-0.68708329
 at1g01020.1	0	0.185936851	0.088226125
 at1g01030.1	0	-0.86325319	0.658510539
