@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Image image="" modified="Jul 16, 2018 2:22:34 PM" scaling="5.0" model="1" datasize="6" bgcolor="0" markmode="0" legendX="10" legendY="10" labelX="10" labelY="50">
+  <DataArea x="498" y="67" visualizationType="0" type="">
+    <Identifier id="18.8.1.19" recursive="true"/>
+  </DataArea>
+  <DataArea x="499" y="135" visualizationType="0" type="">
+    <Identifier id="18.8.1.28" recursive="true"/>
+  </DataArea>
+  <DataArea x="498" y="208" visualizationType="0" type="">
+    <Identifier id="18.8.1.25" recursive="true"/>
+  </DataArea>
+  <DataArea x="498" y="277" visualizationType="0" type="">
+    <Identifier id="18.8.1.24.1 " recursive="true"/>
+  </DataArea>
+  <DataArea x="498" y="352" visualizationType="0" type="">
+    <Identifier id="18.8.1.23" recursive="true"/>
+  </DataArea>
+  <DataArea x="498" y="423" visualizationType="0" type="">
+    <Identifier id="18.8.1.22" recursive="true"/>
+  </DataArea>
+  <DataArea x="499" y="495" visualizationType="0" type="">
+    <Identifier id="18.8.1.20" recursive="true"/>
+  </DataArea>
+  <DataArea x="497" y="568" visualizationType="0" type="">
+    <Identifier id="18.8.1.17" recursive="true"/>
+  </DataArea>
+  <DataArea x="499" y="636" visualizationType="0" type="">
+    <Identifier id="18.8.1.26" recursive="true"/>
+  </DataArea>
+  <DataArea x="499" y="710" visualizationType="0" type="">
+    <Identifier id="18.8.1.21" recursive="true"/>
+  </DataArea>
+  <DataArea x="500" y="781" visualizationType="0" type="">
+    <Identifier id="18.8.1.27" recursive="true"/>
+  </DataArea>
+  <DataArea x="502" y="852" visualizationType="0" type="">
+    <Identifier id="18.8.1.18" recursive="true"/>
+  </DataArea>
+  <DataArea x="506" y="912" visualizationType="0" type="">
+    <Identifier id="18.8.1.1" recursive="true"/>
+  </DataArea>
+  <DataArea x="576" y="912" visualizationType="0" type="">
+    <Identifier id="18.8.1.2" recursive="true"/>
+  </DataArea>
+  <DataArea x="645" y="912" visualizationType="0" type="">
+    <Identifier id="18.8.1.3" recursive="true"/>
+  </DataArea>
+  <DataArea x="716" y="910" visualizationType="1" type="">
+    <Identifier id="18.8.1.4" recursive="true"/>
+  </DataArea>
+  <DataArea x="787" y="910" visualizationType="1" type="">
+    <Identifier id="18.8.1.5" recursive="true"/>
+  </DataArea>
+  <DataArea x="855" y="908" visualizationType="0" type="">
+    <Identifier id="18.8.1.6 " recursive="true"/>
+  </DataArea>
+  <DataArea x="506" y="964" visualizationType="0" type="">
+    <Identifier id="18.8.1.7" recursive="true"/>
+  </DataArea>
+  <DataArea x="575" y="965" visualizationType="0" type="">
+    <Identifier id="18.8.1.8" recursive="true"/>
+  </DataArea>
+  <DataArea x="645" y="964" visualizationType="0" type="">
+    <Identifier id="18.8.1.9" recursive="true"/>
+  </DataArea>
+  <DataArea x="716" y="962" visualizationType="1" type="">
+    <Identifier id="18.8.1.10" recursive="true"/>
+  </DataArea>
+  <DataArea x="787" y="961" visualizationType="0" type="">
+    <Identifier id="18.8.1.11" recursive="true"/>
+  </DataArea>
+  <DataArea x="854" y="960" visualizationType="0" type="">
+    <Identifier id="18.8.1.12" recursive="true"/>
+  </DataArea>
+  <DataArea x="615" y="136" visualizationType="0" type="">
+    <Identifier id="18.8.2" recursive="true"/>
+  </DataArea>
+  <DataArea x="612" y="276" visualizationType="0" type="">
+    <Identifier id="18.8.3" recursive="true"/>
+  </DataArea>
+  <DataArea x="609" y="423" visualizationType="1" type="">
+    <Identifier id="18.8.4" recursive="true"/>
+  </DataArea>
+  <DataArea x="609" y="564" visualizationType="1" type="">
+    <Identifier id="18.8.5" recursive="true"/>
+  </DataArea>
+  <DataArea x="607" y="708" visualizationType="0" type="">
+    <Identifier id="18.8.6" recursive="true"/>
+  </DataArea>
+  <DataArea x="610" y="849" visualizationType="1" type="">
+    <Identifier id="18.8.7" recursive="true"/>
+  </DataArea>
+</Image>
