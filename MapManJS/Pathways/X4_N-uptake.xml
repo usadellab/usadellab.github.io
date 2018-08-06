@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Image image="" modified="Jul 19, 2018 11:38:34 PM" scaling="1.0" model="1" datasize="6" bgcolor="0" markmode="0" legendX="10" legendY="10" labelX="10" labelY="50">
+  <DataArea x="465" y="553" visualizationType="0" type="">
+    <Identifier id="18.8.5.3" recursive="true"/>
+  </DataArea>
+  <DataArea x="923" y="288" visualizationType="0" type="">
+    <Identifier id="24.2.2.9" recursive="true"/>
+  </DataArea>
+  <DataArea x="925" y="401" visualizationType="0" type="">
+    <Identifier id="24.2.2.10" recursive="true"/>
+  </DataArea>
+  <DataArea x="921" y="109" visualizationType="0" type="">
+    <Identifier id="24.3.4.1" recursive="true"/>
+  </DataArea>
+  <DataArea x="920" y="151" visualizationType="0" type="">
+    <Identifier id="24.3.4.2" recursive="true"/>
+  </DataArea>
+  <DataArea x="312" y="458" visualizationType="0" type="">
+    <Identifier id="24.2.16" recursive="true"/>
+  </DataArea>
+  <DataArea x="392" y="246" visualizationType="0" type="">
+    <Identifier id="25.1.5.2.1" recursive="true"/>
+  </DataArea>
+  <DataArea x="453" y="327" visualizationType="0" type="">
+    <Identifier id="25.1.4.2" recursive="true"/>
+  </DataArea>
+  <DataArea x="216" y="391" visualizationType="0" type="">
+    <Identifier id="25.1.4.1" recursive="true"/>
+  </DataArea>
+  <DataArea x="205" y="335" visualizationType="0" type="">
+    <Identifier id="4.1.2.1.1" recursive="true"/>
+  </DataArea>
+  <DataArea x="136" y="194" visualizationType="0" type="">
+    <Identifier id="25.1.5.1" recursive="true"/>
+  </DataArea>
+</Image>
