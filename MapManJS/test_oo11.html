@@ -167,22 +167,22 @@ function start() {
 	var mapping = document.getElementById("selex");
 	console.log("MAPPING"+mapping.selectedIndex);
 	if (mapping.options[mapping.selectedIndex].value == "wheat") {
-		load("mercator.results_wheat.txt");
+		load("./MappingFiles/mercator.results_wheat.txt");
 	}
 	else if  (mapping.options[mapping.selectedIndex].value == "apo") {
-		load("mercator.results_apo.txt");
+		load("./MappingFiles/mercator.results_apo.txt");
 	}
 	else if (mapping.options[mapping.selectedIndex].value == "tair10") {
-		load("ath_agi_locus_tair10.txt");
+		load("./MappingFiles/ath_agi_locus_tair10.txt");
 	}
 	else if (mapping.options[mapping.selectedIndex].value == "tom31") {
-		load("tomato_itag31.results.txt");
+		load("./MappingFiles/tomato_itag31.results.txt");
 	}
 	else if (mapping.options[mapping.selectedIndex].value == "spenn") {
-		load("pennellii.results.txt");
+		load("./MappingFiles/pennellii.results.txt");
 	}
 	else if (mapping.options[mapping.selectedIndex].value == "buscoX4") {
-		load("BUSCO_mercator_x402.txt");
+		load("./MappingFiles/BUSCO_mercator_x402.txt");
 	}
 	else if (mapping.options[mapping.selectedIndex].value == "barley_HC_2017") {
 		load("HC.results.txt");
