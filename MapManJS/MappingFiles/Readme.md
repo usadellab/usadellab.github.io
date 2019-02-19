@@ -9,4 +9,4 @@ or associates an identifier with a BIN e.g.
 BINCODE is a numerical representation of BINS, NAME a textual representation where the ontology is a simple tree and the hierarchy is indicated by dots (.).  
 IDENTIFIER gives your specific identifiers, and the DESCRIPTION can provide a textual description. TYPE is always T for transcripts (or genes).
 
-
+All Files seperate fields by tabstops ("\t")
