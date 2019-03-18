@@ -32,7 +32,11 @@ v 0.11 first public version
 v 0.12 June 2018 added first public MapMan web version 
 
 ## Citation
-please cite one of the latest MapMan papers or Schwacke, Bolger et al. MapMan and Mercator X4
+please cite one of the latest MapMan papers or Schwacke, Bolger et al. MapMan and Mercator X4  
+Schwacke R, Ponce-Soto GY, Krause K, Bolger AM, Arsova B, Hallab A, Gruden K, 
+Stitt M, Bolger ME, Usadel B. MapMan4: a refined protein classification and
+annotation framework applicable to multi-omics data analysis. Mol Plant. 2019 Jan
+8. pii: S1674-2052(19)30008-5. doi: 10.1016/j.molp.2019.01.003.
 
 ## Funding
 This work was funded in part by the project IdeResModBar by the German Ministry of Education and Research and the EU Horizon2020 project GoodBerry
