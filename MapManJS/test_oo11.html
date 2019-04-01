@@ -56,6 +56,10 @@ var BinCounted = {};
 function load(filename) {
 	d3.tsv(filename, function(error, data) {
 		data.forEach(function(d) {
+				d.IDENTIFIER=d.IDENTIFIER.replace(/\'/g,"");
+				d.BINCODE=d.BINCODE.replace(/\'/g,"");
+			        d.NAME=d.NAME.replace(/\'/g,"");
+			        d.DESCRIPTION=d.DESCRIPTION.replace(/\'/g,"");
 				if (d.IDENTIFIER){
 					d.IDENTIFIER =d.IDENTIFIER.toUpperCase();
 					if ((HBincode[d.IDENTIFIER]) && (HBincode[d.IDENTIFIER] != d.BINCODE)){ //secondary BINCODE
