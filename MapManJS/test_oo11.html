@@ -169,6 +169,9 @@ function start() {
 	if (mapping.options[mapping.selectedIndex].value == "wheat") {
 		load("./MappingFiles/mercator.results_wheat.txt");
 	}
+	if (mapping.options[mapping.selectedIndex].value == "tea") {
+		load("./MappingFiles/X4_C_sinensis.txt");
+	}
 	else if  (mapping.options[mapping.selectedIndex].value == "apo") {
 		load("./MappingFiles/mercator.results_apo.txt");
 	}
@@ -391,6 +394,7 @@ ___________________________________________________
 
  <select id="selex">
   <option value="wheat">wheat</option>
+	 <option value="tea"> tea from genome publication</tea>	 
   <option value="barley_HC_2017" selected="selected">barley latest 2017 HC only</option>
   <option value="barley">barley</option>
   <option value="apo">APPO</option>
