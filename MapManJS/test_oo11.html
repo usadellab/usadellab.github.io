@@ -74,7 +74,7 @@ function load(filename) {
 				}
 				if (d.BINCODE){
 					if ((HBinname[d.BINCODE]) && (HBinname[d.BINCODE] != d.NAME)) {
-						console.log( "Binname inconsistent"+HBinname[d.BINCODE] + " YYY " + d.NAME);
+						console.log( "Binname inconsistent"+d.BINCODE+"\n"+HBinname[d.BINCODE] + "<=YYY=>\n" + d.NAME);
 					}
 					HBinname[d.BINCODE]=d.NAME;
 				}
