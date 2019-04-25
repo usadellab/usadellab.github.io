@@ -52,49 +52,49 @@ var BinCounted = {};
 */
 
 
-//read in mapping file. Mapping file is a standard MapMan file in text format NO effing '
 function load(filename) {
 	try{
-	d3.tsv(filename, function(error, data) {
-		if (error) throw error;
-		data.forEach(function(d) {
-				console.log(d);
-				
-				
-			        if (d.NAME) {d.NAME=d.NAME.replace(/\'/g,"");}
-			        if (d.DESCRIPTION) {d.DESCRIPTION=d.DESCRIPTION.replace(/\'/g,"");}
-				if (d.IDENTIFIER){
-					d.IDENTIFIER=d.IDENTIFIER.replace(/\'/g,"");
-					d.IDENTIFIER =d.IDENTIFIER.toUpperCase();
-					if ((HBincode[d.IDENTIFIER]) && (HBincode[d.IDENTIFIER] != d.BINCODE)){ //secondary BINCODE
-								HBincode[d.IDENTIFIER].push(d.BINCODE);
+		d3.tsv(filename, function(error, data) {
+			if (error) throw error;
+			data.forEach(function(d) {
+					console.log(d);
+					
+					
+						if (d.NAME) {d.NAME=d.NAME.replace(/\'/g,"");}
+						if (d.DESCRIPTION) {d.DESCRIPTION=d.DESCRIPTION.replace(/\'/g,"");}
+					if (d.IDENTIFIER){
+						d.IDENTIFIER=d.IDENTIFIER.replace(/\'/g,"");
+						d.IDENTIFIER =d.IDENTIFIER.toUpperCase();
+						if ((HBincode[d.IDENTIFIER]) && (HBincode[d.IDENTIFIER] != d.BINCODE)){ //secondary BINCODE
+									HBincode[d.IDENTIFIER].push(d.BINCODE);
+						}
+						else { //if it existed it is the same so ok to restore
+						 /** TODO this is probably not even needed better code probably elsif !Hbincode[d.IDENTIFER]**/
+							HBincode[d.IDENTIFIER] = [];
+							HBincode[d.IDENTIFIER].push(d.BINCODE);
+						}
+					//console.log(d.IDENTIFIER+"=>"+d.BINCODE);
 					}
-					else { //if it existed it is the same so ok to restore
-					 /** TODO this is probably not even needed better code probably elsif !Hbincode[d.IDENTIFER]**/
-						HBincode[d.IDENTIFIER] = [];
-						HBincode[d.IDENTIFIER].push(d.BINCODE);
+					if (d.BINCODE){
+						d.BINCODE=d.BINCODE.replace(/\'/g,"");
+						if ((HBinname[d.BINCODE]) && (HBinname[d.BINCODE] != d.NAME)) {
+							console.log( "Binname inconsistent"+d.BINCODE+"\n"+HBinname[d.BINCODE] + "<=YYY=>\n" + d.NAME);
+						}
+						HBinname[d.BINCODE]=d.NAME;
 					}
-				//console.log(d.IDENTIFIER+"=>"+d.BINCODE);
-				}
-				if (d.BINCODE){
-					d.BINCODE=d.BINCODE.replace(/\'/g,"");
-					if ((HBinname[d.BINCODE]) && (HBinname[d.BINCODE] != d.NAME)) {
-						console.log( "Binname inconsistent"+d.BINCODE+"\n"+HBinname[d.BINCODE] + "<=YYY=>\n" + d.NAME);
-					}
-					HBinname[d.BINCODE]=d.NAME;
-				}
-		});
-		console.log("DONE parsing");
+			});
+			console.log("DONE parsing");
+		
+			//console.log(HBincode["798"]);
+			parsePage();
+		}); //d3
 	
-		//console.log(HBincode["798"]);
-		parsePage();
-	}); //d3
-	}
 	}
 	catch(error) {
 		alert(error);
 	}
 } //load
+
 
 
 
