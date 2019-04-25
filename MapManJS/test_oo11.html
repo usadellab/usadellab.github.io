@@ -59,6 +59,7 @@ function load(filename) {
 			data.forEach(function(d) {
 					if (d.NAME) {d.NAME=d.NAME.replace(/\'/g,"");}
 					if (d.DESCRIPTION) {d.DESCRIPTION=d.DESCRIPTION.replace(/\'/g,"");}
+					if (d.BINCODE) {d.BINCODE=d.BINCODE.replace(/\'/g,"");};
 					if (d.IDENTIFIER){
 						d.IDENTIFIER=d.IDENTIFIER.replace(/\'/g,"");
 						d.IDENTIFIER =d.IDENTIFIER.toUpperCase();
@@ -73,7 +74,7 @@ function load(filename) {
 					//console.log(d.IDENTIFIER+"=>"+d.BINCODE);
 					}
 					if (d.BINCODE){
-						d.BINCODE=d.BINCODE.replace(/\'/g,"");
+						
 						if ((HBinname[d.BINCODE]) && (HBinname[d.BINCODE] != d.NAME)) {
 							console.log( "Binname inconsistent"+d.BINCODE+"\n"+HBinname[d.BINCODE] + "<=YYY=>\n" + d.NAME);
 						}
