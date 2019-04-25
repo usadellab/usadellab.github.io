@@ -60,6 +60,7 @@ function load(filename) {
 					if (d.NAME) {d.NAME=d.NAME.replace(/\'/g,"");}
 					if (d.DESCRIPTION) {d.DESCRIPTION=d.DESCRIPTION.replace(/\'/g,"");}
 					if (d.BINCODE) {d.BINCODE=d.BINCODE.replace(/\'/g,"");};
+					if (d.IDENTIFIER) {d.IDENTIFIER=d.IDENTIFIER.replace(/\'/g,"");}; // need this so empty '' cells are not evaluated in the next step
 					if (d.IDENTIFIER){
 						d.IDENTIFIER=d.IDENTIFIER.replace(/\'/g,"");
 						d.IDENTIFIER =d.IDENTIFIER.toUpperCase();
