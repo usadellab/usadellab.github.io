@@ -293,6 +293,8 @@ ___________________________________________________
 		console.log(sval+"SV"+pval);
 		arr[k].push(allBins[k],HBinname[allBins[k]],query.HBinCount[allBins[k]],a21,
 		reference.HBinCount[allBins[k]],pval,sval, ratio, fraction);
+		console.log(allBins[k]);
+		console.log(HBinname[allBins[k]]);
 		if (((HBinname[allBins[k]].split(".").length - 1)==1) & (typeof query.HBinCount[allBins[k]]!== "undefined")) { 
 		// one dot thus level 2 and disrgerad undefined 
 			console.log(HBinname[allBins[k]]+":"+query.HBinCount[allBins[k]]);
