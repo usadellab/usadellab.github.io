@@ -57,6 +57,7 @@ function load(filename) {
 	d3.tsv(filename, function(error, data) {
 		if (error) throw error;
 		data.forEach(function(d) {
+				console.log(d);
 				d.IDENTIFIER=d.IDENTIFIER.replace(/\'/g,"");
 				d.BINCODE=d.BINCODE.replace(/\'/g,"");
 			        d.NAME=d.NAME.replace(/\'/g,"");
@@ -198,6 +199,9 @@ function start() {
 	}
 	else if (mapping.options[mapping.selectedIndex].value == "rapese") {
 		load("./MappingFiles/rapeseed_BZH_TR_v5.cds.fa.txt");
+	}
+	else if (mapping.options[mapping.selectedIndex].value == "Hsa") {
+		load("./MappingFiles/homo_sapiens.txt");
 	}
 	else {
 		load("mercator.results_barley.txt");
@@ -418,6 +422,7 @@ ___________________________________________________
   <option value="spenn">S .pennellii LA716 </option>
   <option value="buscoX4">BUSCO 1440 set X4.02</option>
   <option value="rapese">rape seed transcript</option>
+	<option value="hasa">homo sapiens</option>
 </select> 
 
 
