@@ -55,6 +55,7 @@ var BinCounted = {};
 //read in mapping file. Mapping file is a standard MapMan file in text format NO effing '
 function load(filename) {
 	d3.tsv(filename, function(error, data) {
+		if (error) throw error;
 		data.forEach(function(d) {
 				d.IDENTIFIER=d.IDENTIFIER.replace(/\'/g,"");
 				d.BINCODE=d.BINCODE.replace(/\'/g,"");
@@ -170,6 +171,7 @@ function start() {
 	reference = new binTable();
 	var mapping = document.getElementById("selex");
 	console.log("MAPPING"+mapping.selectedIndex);
+	try{ //try loading a mappning file
 	if (mapping.options[mapping.selectedIndex].value == "wheat") {
 		load("./MappingFiles/mercator.results_wheat.txt");
 	}
@@ -180,7 +182,7 @@ function start() {
 		load("./MappingFiles/mercator.results_apo.txt");
 	}
 	else if (mapping.options[mapping.selectedIndex].value == "tair10") {
-		load("./MappingFiles/ath_agi_locus_tair10.txt");
+		load("./MappingFiles/Ath_AGI_LOCUS_TAIR10.txt");
 	}
 	else if (mapping.options[mapping.selectedIndex].value == "tom31") {
 		load("./MappingFiles/tomato_itag31.results.txt");
@@ -199,6 +201,10 @@ function start() {
 	}
 	else {
 		load("mercator.results_barley.txt");
+	}
+	}
+	catch(error) {
+		alert(error);
 	}
 }	
 
