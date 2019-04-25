@@ -54,15 +54,17 @@ var BinCounted = {};
 
 //read in mapping file. Mapping file is a standard MapMan file in text format NO effing '
 function load(filename) {
+	try{
 	d3.tsv(filename, function(error, data) {
 		if (error) throw error;
 		data.forEach(function(d) {
 				console.log(d);
-				d.IDENTIFIER=d.IDENTIFIER.replace(/\'/g,"");
-				d.BINCODE=d.BINCODE.replace(/\'/g,"");
-			        d.NAME=d.NAME.replace(/\'/g,"");
-			        d.DESCRIPTION=d.DESCRIPTION.replace(/\'/g,"");
+				
+				
+			        if (d.NAME) {d.NAME=d.NAME.replace(/\'/g,"");}
+			        if (d.DESCRIPTION) {d.DESCRIPTION=d.DESCRIPTION.replace(/\'/g,"");}
 				if (d.IDENTIFIER){
+					d.IDENTIFIER=d.IDENTIFIER.replace(/\'/g,"");
 					d.IDENTIFIER =d.IDENTIFIER.toUpperCase();
 					if ((HBincode[d.IDENTIFIER]) && (HBincode[d.IDENTIFIER] != d.BINCODE)){ //secondary BINCODE
 								HBincode[d.IDENTIFIER].push(d.BINCODE);
@@ -75,6 +77,7 @@ function load(filename) {
 				//console.log(d.IDENTIFIER+"=>"+d.BINCODE);
 				}
 				if (d.BINCODE){
+					d.BINCODE=d.BINCODE.replace(/\'/g,"");
 					if ((HBinname[d.BINCODE]) && (HBinname[d.BINCODE] != d.NAME)) {
 						console.log( "Binname inconsistent"+d.BINCODE+"\n"+HBinname[d.BINCODE] + "<=YYY=>\n" + d.NAME);
 					}
@@ -86,7 +89,11 @@ function load(filename) {
 		//console.log(HBincode["798"]);
 		parsePage();
 	}); //d3
-	
+	}
+	}
+	catch(error) {
+		alert(error);
+	}
 } //load
 
 
@@ -172,7 +179,7 @@ function start() {
 	reference = new binTable();
 	var mapping = document.getElementById("selex");
 	console.log("MAPPING"+mapping.selectedIndex);
-	try{ //try loading a mappning file
+	
 	if (mapping.options[mapping.selectedIndex].value == "wheat") {
 		load("./MappingFiles/mercator.results_wheat.txt");
 	}
@@ -206,10 +213,7 @@ function start() {
 	else {
 		load("mercator.results_barley.txt");
 	}
-	}
-	catch(error) {
-		alert(error);
-	}
+	
 }	
 
 function parsePage(){	
