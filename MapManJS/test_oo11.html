@@ -192,6 +192,9 @@ function start() {
 	else if (mapping.options[mapping.selectedIndex].value == "tair10") {
 		load("./MappingFiles/Ath_AGI_LOCUS_TAIR10.txt");
 	}
+	else if (mapping.options[mapping.selectedIndex].value == "tair10_m4") {
+		load("./MappingFiles/Ath_AGI_LOCUS_TAIR10_m4.txt");
+	}
 	else if (mapping.options[mapping.selectedIndex].value == "tom31") {
 		load("./MappingFiles/tomato_itag31.results.txt");
 	}
@@ -421,19 +424,23 @@ ___________________________________________________
  <select id="selex">
   
 <option value="rubusIdaeus">black raspberry (R.idaeus)</option>
-	 <option value="fVesca">woodland strawberry (F.vesca)</option>
-	 <option value="fAnanassa">strawberry (F. x ananassa)</option>
- <option value="wheat">wheat</option>
- <option value="tea"> tea from genome publication</tea>	 
-  <option value="barley_HC_2017" selected="selected">barley latest 2017 HC only</option>
+<option value="fVesca">woodland strawberry (F.vesca)</option>
+ <option value="fAnanassa">strawberry (F. x ananassa)</option>
+
+  <option value="wheat">wheat</option>
+ <option value="barley_HC_2017" selected="selected">barley latest 2017 HC only</option>
   <option value="barley">barley</option>
   <option value="apo">APPO</option>
-  <option value="tair10">TAIR 10 LOCUS </option>
+  
+ <option value="tea"> tea from genome publication</tea>	 
+  
   <option value="tom31">S. lycopersicum ITAG 3.1 </option>
   <option value="spenn">S .pennellii LA716 </option>
   <option value="buscoX4">BUSCO 1440 set X4.02</option>
+  <option value="tair10">TAIR 10 LOCUS - MapMan 3 </option>
+  <option value="tair10_m4">TAIR 10 LOCUS </option>
   <option value="rapese">rape seed transcript</option>
-	<option value="ara11_iso">ARAPORT 11 isoform use .1 .2 etc X4_Araport11_R1.0.txt </option>
+  <option value="ara11_iso">ARAPORT 11 isoform use .1 .2 etc X4_Araport11_R1.0.txt </option>
 </select> 
 
 
