@@ -29,6 +29,10 @@ var mappingfile={};
 var array=[];
 var SIZE=5;
 fieldpointer=4;
+var Imagepath =   "./Pathways/X4_Metabolism_overviewX4_V41.svg";
+var XMLpath  =  "./Pathways/X4_Metabolism_overviewX4_V41.xml";
+var MFpath = "./MappingFiles/Athaliana.results.txt";
+var Experimentpath = "./Experiments/JJtest.txt";
 
 console.log(color(3));
 console.log(calcColor(1));
@@ -49,7 +53,7 @@ q.await(function(error) {
 });
 
 function load_svg(callback){
-	d3.xml("./Pathways/X4_Metabolism_overviewX4_V41.svg").mimeType("image/svg+xml").get(function(error, xml) {
+	d3.xml(Imagepath).mimeType("image/svg+xml").get(function(error, xml) {
 	  if (error) throw error;
 	  document.body.appendChild(xml.documentElement);
 	  //needs to go here otherwise we are not sure if loaded ASYNCHRONOUS
@@ -62,7 +66,7 @@ function load_svg(callback){
 // this function loads the instructions for the a pathway image
 // this is the XML file 
 function load_xml(callback){
-	d3.text("./Pathways/X4_Metabolism_overviewX4_V41.xml", function(text) {
+	d3.text(XMLpath, function(text) {
 		//console.log(text);
 		var lines = text.split("\n");
 		var xcache;
@@ -112,7 +116,7 @@ function load_xml(callback){
 // this is the Mapping file loader
 function load_mf(callback){
 /** TODO add multibins **/
-	d3.text("./MappingFiles/Athaliana.results.txt", function(text) {
+	d3.text(MFpath, function(text) {
 		//console.log(text);
 		text=text.toLowerCase();
 		text=text.replace(/\r/g,""); //remove windows pony 
@@ -140,7 +144,7 @@ function load_mf(callback){
 // each column is one Log2 Fold change
 // p-values etc are not yet supported
 function load_data(callback){
-	d3.text("./Experiments/JJtest.txt", function(text) {
+	d3.text(Experimentpath, function(text) {
 		//console.log(text);
 		text=text.toLowerCase();
 		text=text.replace(/\r/g,""); //remove windows pony
