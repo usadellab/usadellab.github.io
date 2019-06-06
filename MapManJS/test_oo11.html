@@ -213,6 +213,9 @@ function start() {
 	else if (mapping.options[mapping.selectedIndex].value == "ara11_iso") {
 		load("./MappingFiles/X4_Araport11_R1.0.txt");
 	}
+	else if (mapping.options[mapping.selectedIndex].value == "rubusOcc") {
+		load("./MappingFiles/X4_Rubus_occidentalis.txt");
+	}
 	else {
 		load("mercator.results_barley.txt");
 	}
@@ -423,7 +426,7 @@ ___________________________________________________
 
  <select id="selex">
   
-<option value="rubusIdaeus">black raspberry (R.idaeus)</option>
+<option value="rubusOcc">black raspberry (R.occidentalis)</option>
 <option value="fVesca">woodland strawberry (F.vesca)</option>
  <option value="fAnanassa">strawberry (F. x ananassa)</option>
 
