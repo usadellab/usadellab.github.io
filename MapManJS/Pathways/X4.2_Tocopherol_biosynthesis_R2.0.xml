@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Image image="X4_Tocopherol_biosynthesis_R1.0" size="720x509" modified="2019-07-08 15:01:09.228668" scaling="1.0">
+	<DataArea x="150" y="69" visualizationType="1">
+		<Identifier id="10.3.2.2" recursive="true"/>
+	</DataArea>
+	<DataArea x="150" y="152" visualizationType="1">
+		<Identifier id="10.3.2.3" recursive="true"/>
+	</DataArea>
+	<DataArea x="150" y="244" visualizationType="1">
+		<Identifier id="10.3.2.4" recursive="true"/>
+	</DataArea>
+	<DataArea x="150" y="323" visualizationType="1">
+		<Identifier id="10.3.2.5" recursive="true"/>
+	</DataArea>
+	<DataArea x="150" y="410" visualizationType="1">
+		<Identifier id="10.3.2.6" recursive="true"/>
+	</DataArea>
+	<DataArea x="414" y="60" visualizationType="1">
+		<Identifier id="10.3.2.7" recursive="true"/>
+	</DataArea>
+	<DataArea x="393" y="89" visualizationType="1">
+		<Identifier id="10.3.2.8" recursive="true"/>
+	</DataArea>
+</Image>

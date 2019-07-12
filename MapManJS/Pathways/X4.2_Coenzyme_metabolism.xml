@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Image image="M4_Coenzyme_metabolism_r1.1" size="1024x724" modified="2019-07-08 15:01:09.229976" scaling="1.0">
+	<DataArea x="98" y="132" visualizationType="1">
+		<Identifier id="7.1" recursive="true"/>
+	</DataArea>
+	<DataArea x="98" y="232" visualizationType="1">
+		<Identifier id="7.2" recursive="true"/>
+	</DataArea>
+	<DataArea x="435" y="640" visualizationType="1">
+		<Identifier id="7.10" recursive="true"/>
+	</DataArea>
+	<DataArea x="99" y="436" visualizationType="1">
+		<Identifier id="7.4" recursive="true"/>
+	</DataArea>
+	<DataArea x="99" y="536" visualizationType="1">
+		<Identifier id="7.5" recursive="true"/>
+	</DataArea>
+	<DataArea x="102" y="634" visualizationType="1">
+		<Identifier id="7.13" recursive="true"/>
+	</DataArea>
+	<DataArea x="434" y="132" visualizationType="1">
+		<Identifier id="7.6" recursive="true"/>
+	</DataArea>
+	<DataArea x="769" y="538" visualizationType="1">
+		<Identifier id="7.14" recursive="true"/>
+	</DataArea>
+	<DataArea x="432" y="538" visualizationType="1">
+		<Identifier id="7.9.1" recursive="true"/>
+	</DataArea>
+	<DataArea x="563" y="538" visualizationType="1">
+		<Identifier id="7.9.2" recursive="true"/>
+	</DataArea>
+	<DataArea x="771" y="146" visualizationType="1">
+		<Identifier id="7.11.1" recursive="true"/>
+	</DataArea>
+	<DataArea x="825" y="223" visualizationType="1">
+		<Identifier id="7.11.2" recursive="true"/>
+	</DataArea>
+	<DataArea x="950" y="171" visualizationType="1">
+		<Identifier id="7.11.3" recursive="true"/>
+	</DataArea>
+	<DataArea x="753" y="319" visualizationType="1">
+		<Identifier id="7.12.1" recursive="true"/>
+	</DataArea>
+	<DataArea x="815" y="321" visualizationType="1">
+		<Identifier id="7.12.2" recursive="true"/>
+	</DataArea>
+	<DataArea x="779" y="419" visualizationType="1">
+		<Identifier id="7.12.5" recursive="true"/>
+	</DataArea>
+	<DataArea x="858" y="418" visualizationType="1">
+		<Identifier id="7.12.6.1" recursive="true"/>
+	</DataArea>
+	<DataArea x="858" y="432" visualizationType="1">
+		<Identifier id="7.12.6.2" recursive="true"/>
+	</DataArea>
+	<DataArea x="857" y="449" visualizationType="1">
+		<Identifier id="7.12.6.3" recursive="true"/>
+	</DataArea>
+	<DataArea x="891" y="416" visualizationType="1">
+		<Identifier id="7.12.6.4" recursive="true"/>
+	</DataArea>
+	<DataArea x="895" y="438" visualizationType="1">
+		<Identifier id="7.12.6.5" recursive="true"/>
+	</DataArea>
+	<DataArea x="955" y="454" visualizationType="1">
+		<Identifier id="7.12.6.6" recursive="true"/>
+	</DataArea>
+	<DataArea x="895" y="339" visualizationType="1">
+		<Identifier id="7.12.3" recursive="true"/>
+	</DataArea>
+	<DataArea x="936" y="325" visualizationType="1">
+		<Identifier id="7.12.4" recursive="true"/>
+	</DataArea>
+	<DataArea x="103" y="334" visualizationType="1">
+		<Identifier id="7.3" recursive="true"/>
+	</DataArea>
+	<DataArea x="427" y="235" visualizationType="1">
+		<Identifier id="7.7.1" recursive="true"/>
+	</DataArea>
+	<DataArea x="421" y="315" visualizationType="1">
+		<Identifier id="7.8.1" recursive="true"/>
+	</DataArea>
+	<DataArea x="614" y="342" visualizationType="1">
+		<Identifier id="7.8.3" recursive="true"/>
+	</DataArea>
+	<DataArea x="457" y="426" visualizationType="1">
+		<Identifier id="7.8.5" recursive="true"/>
+	</DataArea>
+	<DataArea x="564" y="234" visualizationType="1">
+		<Identifier id="7.7.2" recursive="true"/>
+	</DataArea>
+	<DataArea x="929" y="408" visualizationType="1">
+		<Identifier id="7.12.6.7" recursive="true"/>
+	</DataArea>
+	<DataArea x="616" y="426" visualizationType="1">
+		<Identifier id="7.8.4" recursive="true"/>
+	</DataArea>
+	<DataArea x="454" y="378" visualizationType="1">
+		<Identifier id="7.8.2" recursive="true"/>
+	</DataArea>
+</Image>
